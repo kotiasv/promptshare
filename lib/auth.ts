@@ -1,7 +1,7 @@
 import axios from "axios"
 import { NextAuthOptions, getServerSession } from "next-auth"
 import GithubProvider from "next-auth/providers/github"
-import { createUser, getUser } from "./actions"
+import { createUser, deleteUser, getUser } from "./actions"
 import jsonwebtoken from "jsonwebtoken"
 import { JWT } from "next-auth/jwt"
 
@@ -89,6 +89,8 @@ const authOptions: NextAuthOptions = {
                         user.image as string
                     )
                 }
+
+                // await deleteUser(userExists.user?.id as string)
 
                 return true
             } catch (error) {

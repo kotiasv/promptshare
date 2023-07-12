@@ -1,5 +1,13 @@
-import { createUserMutation, getUserQuery } from "@/graphql"
+import {
+    createPromptMutation,
+    createUserMutation,
+    deleteUserMutation,
+    getPromptsQuery,
+    getUserQuery
+} from "@/graphql"
+import { PromptForm } from "@/types"
 import { GraphQLClient } from "graphql-request"
+import axios from "axios"
 
 // production / dev
 const isProduction = process.env.NODE_ENV === "production"
@@ -22,6 +30,15 @@ const graphQLRequest = async (query: string, variables = {}) => {
         throw error
     }
 }
+export const fetchToken = async () => {
+    try {
+        const response = await axios.get(`${serverUrl}/api/auth/token`)
+        return response.data
+    } catch (error) {
+        throw error
+    }
+}
+
 
 export const getUser = (email: string) => {
     client.setHeader("x-api-key", apiKey)
@@ -40,5 +57,32 @@ export const createUser = (
         input: {
             name, email, imageUrl
         }
+    })
+}
+
+export const getPrompts = () => {
+    client.setHeader("x-api-key", apiKey)
+    return graphQLRequest(getPromptsQuery)
+}
+
+export const createPrompt = (form: PromptForm, creatorId: string, token: string) => {
+    client.setHeader("x-api-key", apiKey)
+    client.setHeader("Authorization", `Bearer ${token}`)
+    const variables = {
+        input: {
+            ...form,
+            createdBy: {
+                link: creatorId
+            }
+        }
+    }
+    return graphQLRequest(createPromptMutation, variables)
+}
+
+// dev only!
+export const deleteUser = (id: string) => {
+    client.setHeader("x-api-key", apiKey)
+    return graphQLRequest(deleteUserMutation, {
+        id
     })
 }

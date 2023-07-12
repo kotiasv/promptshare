@@ -9,6 +9,23 @@ export const getUserQuery = `
     }
 `
 
+export const getPromptsQuery = `
+    query GetPrompts {
+        promptCollection(first: 10) {
+            edges {
+                node {
+                    title
+                    description
+                    createdBy {
+                        name
+                        imageUrl
+                    }
+                }
+            }
+        }
+    }
+`
+
 export const createUserMutation = `
     mutation CreateUser($input: UserCreateInput!) {
         userCreate(input: $input) {
@@ -18,6 +35,31 @@ export const createUserMutation = `
                 imageUrl
                 id
             }
+        }
+    }
+`
+
+export const createPromptMutation = `
+    mutation PromptCreate($input: PromptCreateInput!) {
+        promptCreate(input: $input) {
+            prompt {
+                title
+                description
+                createdBy {
+                    name
+                    email
+                }
+                id
+            }
+        }
+    }
+`
+
+// dev only!
+export const deleteUserMutation = `
+    mutation DeleteUser($id: ID!) {
+        userDelete(by: { id: $id }) {
+            deletedId
         }
     }
 `
