@@ -1,7 +1,12 @@
 import Image from "next/image"
-import NavbarSession from "./NavbarSession"
 
-const Navbar = () => {
+import { getCurrentUser } from "@/lib/auth"
+import AuthSession from "./AuthSession"
+import NavUser from "./NavUser"
+
+const Navbar = async () => {
+    const session = await getCurrentUser()
+
     return (
         <nav className="flex w-full mb-16 pt-3 px-4 justify-between items-center">
             <a className="flex items-center gap-2" href="/">
@@ -13,7 +18,10 @@ const Navbar = () => {
                 />
                 <p className="hidden sm:block text-xl font-medium">PromptShare</p>
             </a>
-            <NavbarSession />
+            {!session
+                ? (<AuthSession />)
+                : (<NavUser user={session.user} />)
+            }
         </nav>
     )
 }
