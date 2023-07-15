@@ -16,7 +16,7 @@ const User = g.model("User", {
 // @ts-ignore
 const Prompt = g.model("Prompt", {
     title: g.string().length({ min: 2, max: 40 }),
-    description: g.string(),
+    description: g.string().length({ min: 10 }),
     createdBy: g.relation(() => User)
 }).auth((rules) => {
     rules.public().read()

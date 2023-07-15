@@ -2,6 +2,7 @@ import {
     createPromptMutation,
     createUserMutation,
     deleteUserMutation,
+    getPromptQuery,
     getPromptsQuery,
     getUserQuery
 } from "@/graphql"
@@ -63,6 +64,23 @@ export const createUser = (
 export const getPrompts = () => {
     client.setHeader("x-api-key", apiKey)
     return graphQLRequest(getPromptsQuery)
+}
+
+export const getPromptsById = async (id: string) => {
+    client.setHeader("x-api-key", apiKey)
+    const variables = {
+        id
+    }
+    return await graphQLRequest(getPromptQuery, variables) as {
+        prompt: {
+            title: string
+            description: string
+            createdBy: {
+                name: string
+                imageUrl: string
+            }
+        }
+    }
 }
 
 export const createPrompt = (form: PromptForm, creatorId: string, token: string) => {

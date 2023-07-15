@@ -11,7 +11,7 @@ export const getUserQuery = `
 
 export const getPromptsQuery = `
     query GetPrompts {
-        promptCollection(first: 10) {
+        promptCollection(first: 100) {
             edges {
                 node {
                     title
@@ -20,9 +20,23 @@ export const getPromptsQuery = `
                         name
                         imageUrl
                     }
+                    id
                 }
             }
         }
+    }
+`
+
+export const getPromptQuery = `
+    query GetPrompt($id: ID!) {
+        prompt(by: { id: $id }) {
+            title
+            description
+            createdBy {
+              name
+              imageUrl
+            }
+          }
     }
 `
 

@@ -8,19 +8,10 @@ import Link from "next/link"
 import { useEffect } from "react"
 
 const NavUser = ({ user }: { user: UserProfile }) => {
-    const fetch = async () => {
-        const { token } = await fetchToken()
-        return token
-    }
-
-    const test = async () => {
-        console.log("!")
-        const { token } = await fetchToken()
-        await createPrompt({
-            title: "test",
-            description: "124"
-        }, user.id, token)
-    }
+    // const fetch = async () => {
+    //     const { token } = await fetchToken()
+    //     return token
+    // }
 
     return (
         <div className="flex gap-5">
@@ -31,16 +22,18 @@ const NavUser = ({ user }: { user: UserProfile }) => {
                 alt="Icon"
                 className="rounded-full"
             />
-            <button>
+            <button
+                className="px-4 py-1 font-medium border border-white text-white rounded-md transition-all duration-300 bg-gradient-to-l from-amber-500 to-orange-600 hover:bg-none hover:text-amber-500 hover:border-amber-500 hover:scale-[1.03]"
+            >
                 <Link href="/create-prompt">
                     Create Prompt
                 </Link>
             </button>
-            <button onClick={() => signOut()}>
+            <button
+                onClick={() => signOut()}
+                className="border border-black px-4 rounded-md transition-all duration-300 hover:text-white hover:bg-black hover:scale-[1.03]"
+            >
                 Sign out
-            </button>
-            <button onClick={test}>
-                Upload
             </button>
         </div>
     )

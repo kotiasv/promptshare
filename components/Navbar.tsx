@@ -16,7 +16,7 @@ const Navbar = async () => {
                     height={40}
                     alt="Logo"
                 />
-                <p className="hidden sm:block text-xl font-medium">PromptShare</p>
+                <p className="hidden sm:block text-2xl font-medium">PromptShare</p>
             </a>
             {!session
                 ? (<AuthSession />)

@@ -8,9 +8,15 @@ export type emailsProp = {
 }[]
 
 export type UserPrompts = {
-    title: string
-    description: string
-    id: string
+    node: {
+        title: string
+        description: string
+        id?: string
+        createdBy?: {
+            name: string
+            imageUrl: string
+        }
+    }
 }
 
 export interface Prompts extends UserPrompts {

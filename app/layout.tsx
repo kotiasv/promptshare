@@ -23,9 +23,10 @@ export default function RootLayout({
     return (
         <html
             lang="en"
-            className={montserrat.className}
+            className={`${montserrat.className} relative h-full`}
+            suppressHydrationWarning={true}
         >
-            <body className="max-w-[1200px] mx-auto">
+            <body className="max-w-[1200px] mx-auto h-full">
                 <Navbar />
                 {children}
             </body>
