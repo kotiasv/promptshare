@@ -6,8 +6,7 @@ import Image from "next/image"
 
 const page = async () => {
     const session = await getCurrentUser()
-    const prompts = session.user.prompts.edges
-    console.log(prompts)
+
     return session ? (
         <section>
             <BackButton />
@@ -17,18 +16,18 @@ const page = async () => {
                 alt="user"
                 width={200}
                 height={200}
-                className="rounded-full mx-auto"
+                className="rounded-full mx-auto mt-6"
             />
-            <h3 className="text-center text-4xl font-medium mt-3">
+            <h3 className="text-center text-3xl font-medium mt-3 xs:text-4xl">
                 {session.user.name}
             </h3>
             <h4 className="text-gray-600 text-center mt-1">
                 {session.user.email}
             </h4>
             <h2 className="text-4xl mt-28 ml-11">Prompts</h2>
-            {prompts.length ? (
-                <div className="columns-3 mt-8">
-                    {prompts.map(({ node: { title, id } }) => (
+            {session.user.prompts.edges.length ? (
+                <div className="columns-1 px-10 sm:columns-2 lg:columns-3 mt-8 sm:px-4">
+                    {session.user.prompts.edges.map(({ node: { title, id } }) => (
                         <ProfilePromptsCard
                             title={title as string}
                             id={id as string}
@@ -46,7 +45,7 @@ const page = async () => {
         <section className="text-center text-4xl">
             <BackButton />
             <p className="mt-72 text-gray-500">
-                Sign In to create prompts
+                Sign In to see profile
             </p>
         </section>
     )

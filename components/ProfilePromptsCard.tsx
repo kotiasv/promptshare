@@ -20,11 +20,11 @@ const ProfilePromptsCard = ({ title, id }: {
     return (
         <div className="relative">
             <div
-                className="flex justify-center py-8 border-gray-300 border break-inside-avoid mb-10 cursor-pointer"
+                className="flex justify-center py-8 border-gray-300 border break-inside-avoid mb-5 cursor-pointer"
                 onClick={() => router.push(`/prompts/${id}`)}
             >
                 <h3
-                    className="text-center font-medium text-2xl w-[300px]"
+                    className="text-center xs:text-xl font-medium text-2xl md:text-2xl w-[300px]"
                 >
                     {title}
                 </h3>

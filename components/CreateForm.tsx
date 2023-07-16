@@ -3,12 +3,13 @@
 import { FormEvent, useState } from "react"
 import { SessionInterface } from "@/types"
 import { createPrompt, fetchToken } from "@/lib/actions"
+import { useRouter } from "next/navigation"
 
 const CreateForm = ({ session }: { session: SessionInterface | null }) => {
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
     const [loading, setLoading] = useState(false)
-
+    const router = useRouter()
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault()
         if (!session) return
@@ -29,6 +30,7 @@ const CreateForm = ({ session }: { session: SessionInterface | null }) => {
             setTitle("")
             setDescription("")
             setLoading(false)
+            router.refresh()
         } catch (error) {
             console.log(error)
             setLoading(false)
@@ -36,7 +38,7 @@ const CreateForm = ({ session }: { session: SessionInterface | null }) => {
     }
 
     return session && (
-        <form onSubmit={handleSubmit} className="flex flex-col mt-14 max-w-[650px] mx-auto">
+        <form onSubmit={handleSubmit} className="flex flex-col md:max-w-[700px] mt-14 sm:max-w-[600px] xs:max-w-[530px] max-w-[300px] mx-auto">
             <label>
                 <p className="text-3xl">Title</p>
                 <input

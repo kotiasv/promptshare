@@ -9,11 +9,8 @@ const CreatePromptPage = async () => {
 
     return session ? (
         <section>
-            <div className="flex justify-between items-center">
-                <BackButton />
-                <h2 className=" text-4xl font-medium">Create Prompt</h2>
-                <div />
-            </div>
+            <BackButton />
+            <h2 className="text-4xl mt-6 font-medium ml-8">Create Prompt</h2>
             <CreateForm session={session} />
         </section>
     ) : (

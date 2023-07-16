@@ -7,7 +7,6 @@ const page = async ({ params: { id } }: {
     params: { id: string }
 }) => {
     const { prompt } = await getPromptsById(id)
-    console.log(prompt)
     return (
         <section className="">
             <BackButton />
@@ -26,7 +25,7 @@ const page = async ({ params: { id } }: {
             <h1 className="mt-24 text-4xl font-medium text-center">
                 {prompt.title}
             </h1>
-            <p className="mt-10 max-w-5xl leading-8 text-2xl text-gray-700 mx-auto">
+            <p className="mt-10 text-xl max-w-5xl leading-8 xs:text-2xl text-gray-700 mx-auto px-3">
                 {prompt.description}
                 <CopyButton description={prompt.description} />
             </p>
