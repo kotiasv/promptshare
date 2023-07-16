@@ -1,18 +1,13 @@
 "use client"
 
-import { createPrompt, fetchToken } from "@/lib/actions"
 import { UserProfile } from "@/types"
 import { signOut } from "next-auth/react"
 import Image from "next/image"
 import Link from "next/link"
-import { useEffect } from "react"
+import { useRouter } from "next/navigation"
 
 const NavUser = ({ user }: { user: UserProfile }) => {
-    // const fetch = async () => {
-    //     const { token } = await fetchToken()
-    //     return token
-    // }
-
+    const router = useRouter()
     return (
         <div className="flex gap-5">
             <Image
@@ -20,7 +15,8 @@ const NavUser = ({ user }: { user: UserProfile }) => {
                 width={45}
                 height={45}
                 alt="Icon"
-                className="rounded-full"
+                className="rounded-full cursor-pointer"
+                onClick={() => router.push("/profile")}
             />
             <button
                 className="px-4 py-1 font-medium border border-white text-white rounded-md transition-all duration-300 bg-gradient-to-l from-amber-500 to-orange-600 hover:bg-none hover:text-amber-500 hover:border-amber-500 hover:scale-[1.03]"

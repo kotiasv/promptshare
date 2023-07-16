@@ -43,6 +43,9 @@ export interface SessionInterface extends Session {
         name: string
         imageUrl: string
         email: string
+        prompts: {
+            edges: UserPrompts[] | []
+        }
     }
 }
 

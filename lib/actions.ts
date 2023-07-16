@@ -1,6 +1,7 @@
 import {
     createPromptMutation,
     createUserMutation,
+    deletePromptMutation,
     deleteUserMutation,
     getPromptQuery,
     getPromptsQuery,
@@ -95,6 +96,15 @@ export const createPrompt = (form: PromptForm, creatorId: string, token: string)
         }
     }
     return graphQLRequest(createPromptMutation, variables)
+}
+
+export const deletePrompt = (promptId: string, token: string) => {
+    client.setHeader("x-api-key", apiKey)
+    client.setHeader("Authorization", `Bearer ${token}`)
+    const variables = {
+        id: promptId
+    }
+    return graphQLRequest(deletePromptMutation, variables)
 }
 
 // dev only!

@@ -7,7 +7,7 @@ const BackButton = () => {
     const router = useRouter()
     return (
         <button
-            onClick={() => router.push("/")}
+            onClick={() => router.back()}
             className="flex gap-1 text-2xl items-center ml-4"
         >
             <Image

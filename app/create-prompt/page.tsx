@@ -6,7 +6,6 @@ import { getCurrentUser } from "@/lib/auth"
 
 const CreatePromptPage = async () => {
     const session = await getCurrentUser()
-    console.log(session)
 
     return session ? (
         <section>

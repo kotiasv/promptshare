@@ -1,4 +1,5 @@
 import BackButton from "@/components/BackButton"
+import CopyButton from "@/components/CopyButton"
 import { getPromptsById } from "@/lib/actions"
 import Image from "next/image"
 
@@ -25,8 +26,9 @@ const page = async ({ params: { id } }: {
             <h1 className="mt-24 text-4xl font-medium text-center">
                 {prompt.title}
             </h1>
-            <p>
+            <p className="mt-10 max-w-5xl leading-8 text-2xl text-gray-700 mx-auto">
                 {prompt.description}
+                <CopyButton description={prompt.description} />
             </p>
         </section>
     )

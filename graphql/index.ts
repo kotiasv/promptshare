@@ -5,6 +5,15 @@ export const getUserQuery = `
             name
             email
             imageUrl
+            prompts(first: 100) {
+                edges {
+                    node {
+                        title
+                        description
+                        id
+                    }
+                }
+            }
         }
     }
 `
@@ -73,6 +82,14 @@ export const createPromptMutation = `
 export const deleteUserMutation = `
     mutation DeleteUser($id: ID!) {
         userDelete(by: { id: $id }) {
+            deletedId
+        }
+    }
+`
+
+export const deletePromptMutation = `
+    mutation DeketePrompt($id: ID!) {
+        promptDelete(by: { id: $id }) {
             deletedId
         }
     }
