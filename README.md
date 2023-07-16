@@ -1,34 +1,68 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# With ♥ by Kotiasv
 
-## Getting Started
+Share & View ChatGPT prompts with PromptShare.
+<p align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=git,ts,nodejs,react,tailwind,graphql,nextjs,vercel&theme=dark" />
+  </a>
+  <p>Aaaand Grafbase (no icon yet)</p>
+</p>
 
-First, run the development server:
+## Getting started
+
+To get started you need to run developer servers
 
 ```bash
+# BASH #1
 npm run dev
 # or
 yarn dev
 # or
 pnpm dev
 ```
+```bash
+# BASH #2
+npx grafbase@0.24 dev
+```
+To run github auth locally you need to create your own Github App. (`Settings/Developer settings`)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Environment variables
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+For github auth:
+- `GITHUB_ID`
+- `GITHUB_SECRET`
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+For grafbase:
+- `NEXT_PUBLIC_GRAFBASE_API_URL`
+- `NEXT_PUBLIC_GRAFBASE_API_KEY`
 
-## Learn More
+For JWT:
+- `NEXTAUTH_SECRET`
 
-To learn more about Next.js, take a look at the following resources:
+For NextAuth:
+- `NEXTAUTH_URL`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+For Auth I used NextAuth. Auth Options inside `lib/auth.ts` ; jwt, session and signIn callbacks are rewrote there.
 
-## Deploy on Vercel
+All grafbase interactions inside `lib/actions.ts`. GraphQL queries placed in `graphql`. 
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Some interactions require token. (`api/auth/token/route.ts`)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Grafbase config and modals store in `grafbase/grafbase.config.ts`. Provider set as JWT
+
+Main types in `types/index.ts`.
+
+For getting grafbase data I suggest to use SSR.
+
+Other files that left is pages and components.
+
+## Contributions
+
+This project is Open Source. Your feedback and contributions are welcome here.
+
+## Thanks
+
+[Adrian Hajdin](https://github.com/adrianhajdin) for his [Web App](https://promptopia.vercel.app/). Took idea and some stylings as well.
+
