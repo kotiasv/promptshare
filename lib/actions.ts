@@ -34,9 +34,10 @@ const graphQLRequest = async (query: string, variables = {}) => {
 }
 export const fetchToken = async () => {
     try {
-        const response = await axios.get(`${serverUrl}/api/auth/token`)
+        const response = await axios.get(`/api/auth/token`)
         return response.data
     } catch (error) {
+        console.log("fetch failed")
         throw error
     }
 }

@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "@grafbase/sdk": "^0.1.1",
-    "@types/jsonwebtoken": "^9.0.2"
+    "@types/jsonwebtoken": "^9.0.2",
+    "vercel": "^31.0.3"
   }
 }

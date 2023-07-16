@@ -19,6 +19,7 @@ const CreateForm = ({ session }: { session: SessionInterface | null }) => {
         setLoading(true)
 
         try {
+            console.log("FETCH")
             const { token } = await fetchToken()
             await createPrompt({
                 title,
