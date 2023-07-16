@@ -4,8 +4,8 @@ Share & View ChatGPT prompts with PromptShare.
 <p align="center">
   <a href="https://skillicons.dev">
     <img src="https://skillicons.dev/icons?i=git,ts,nodejs,react,tailwind,graphql,nextjs,vercel&theme=dark" />
+    <img src="https://github.com/kotiasv/promptshare/assets/54102609/9af05054-22de-46a5-80fa-9d1d208a2e42" width="48" />
   </a>
-  <p>Aaaand Grafbase (no icon yet)</p>
 </p>
 
 ## Getting started
